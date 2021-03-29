@@ -12,20 +12,40 @@
 #   Defines a few example trees
 
 import a9q2 as tn
-import treefunctions
+import treefunctions as tf
 
 # ####################################################################################################
 # #### UNIT TEST CASE: replace_in() ####
 test_item = "replace_in()"
 
+test_suite_replace = [
+    {
+        "tree_in"      : None,
+        "target_in"    : 1,
+        "repl_in"      : 0,
+        "expected_str" : "EMPTY",
+        "reason"       : 'empty tree',
+    },
+
+    {
+        "chain_in"      : tn.treenode(1),
+        "target_in"     : 1,
+        "repl_in"       : 0,
+        "expected_str"  : "[ 0 | / ]",
+        "reason"        : 'node chain with one node, target replaced',
+    }
+]
+
+
+"""
 tree_in = None
 target_in = 1
 repl_in = 0
 expected_str = "EMPTY"
 reason = 'empty tree'
 
-tn.subst(tree_in, target_in, repl_in)
-result_str = treefunctions.to_string(tree_in)
+tn.treenode(tree_in, target_in, repl_in).subst(tree_in, target_in, repl_in)
+result_str = tf.to_string(tree_in)
 if result_str != expected_str:
     print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result_str, expected_str, reason))
-
+"""
