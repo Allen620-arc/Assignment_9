@@ -14,7 +14,7 @@
 import a9q2 as tn
 from traversals import pre_order, in_order, post_order, breadth_order
 import treefunctions as tf
-import exampletrees as egt
+import a9q2_testing as egt
 
 # Create the tree we've been using in class
 #  - this is one of the dozens of ways to create the tree
