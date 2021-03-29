@@ -17,7 +17,7 @@
 #
 # These traversals print the data values stored in a primitive tree.
 
-import treenode as tn
+import a9q2 as tn
 import Queue as Q
 
 def in_order(tnode):

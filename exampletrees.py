@@ -11,7 +11,7 @@
 # Synopsis:
 #   Defines a few example trees
 
-import treenode as tn
+import a9q2 as tn
 
 
 atree = tn.treenode(2)

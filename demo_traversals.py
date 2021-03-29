@@ -11,7 +11,7 @@
 # Synopsis:
 #   A demonstation of the script traversals.py
 
-import treenode as tn
+import a9q2 as tn
 from traversals import pre_order, in_order, post_order, breadth_order
 import treefunctions as tf
 import exampletrees as egt
