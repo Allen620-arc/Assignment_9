@@ -25,26 +25,34 @@ class treenode(object):
         Purpose:
             Replaces each occurrence of the target value with the replacement
         Pre-conditions:
-            :param node_chain: a node-chain, possibly empty
+            :param tnode: a tree node
             :param target: a value that might appear in the node chain
             :param replacement: the value to replace the target
         Pre-conditions:
-            Each occurrence of the target value in the chain is replaced with
-            the replacement value.
+            Each occurrence of the target value in the chain is replaced with the replacement value.
         Return:
-            None
+            None, but modifies the given tree.
         """
-        # walk along the chain
         if tnode is None:
-            return "EMPTY"
+            return None
         else:
-            while tnode is not None:
-                if tnode.get_data() == target:
-                    tnode.set_data(replacement)
-                tnode = tnode.get_next()
-        return None
+            if tnode is not None:
+                if tnode.data is target:
+                    tnode.data = replacement
+            self.subst(tnode.left, target, replacement)
+            self.subst(tnode.right, target, replacement)
 
     def copy(self, tnode):
+        """
+        Purpose:
+            To create an exact copy of the given tree, with completely new tree nodes, but exactly the same data values.
+        Pre-conditions:
+            :param tnode: a tree node
+        Post-conditions:
+
+        Return:
+
+        """
         return None
 
     def collect_data_inorder(self, tnode):

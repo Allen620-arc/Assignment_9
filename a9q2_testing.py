@@ -16,36 +16,63 @@ import treefunctions as tf
 
 # ####################################################################################################
 # #### UNIT TEST CASE: replace_in() ####
-test_item = "replace_in()"
-
-test_suite_replace = [
+test_suite = [
     {
-        "tree_in"      : None,
-        "target_in"    : 1,
-        "repl_in"      : 0,
-        "expected_str" : "EMPTY",
-        "reason"       : 'empty tree',
+        'tree in': None,
+        'target in': 1,
+        'repl in': 0,
+        'expected str': "EMPTY",
+        'reason': 'empty tree'
     },
 
     {
-        "chain_in"      : tn.treenode(1),
-        "target_in"     : 1,
-        "repl_in"       : 0,
-        "expected_str"  : "[ 0 | / ]",
-        "reason"        : 'node chain with one node, target replaced',
+        'tree in': tn.treenode(1),
+        'target in': 1,
+        'repl in': 0,
+        'expected str': '0\n',
+        'reason': 'tree with one node, target replaced 1 with 0'
+    },
+
+    {
+        'tree in': tn.treenode(1),
+        'target in': 0,
+        'repl in': 1,
+        'expected str': '1\n',
+        'reason': 'node chain with one node, target not present'
+    },
+
+    {
+        'tree in': tn.treenode(1, tn.treenode(2)),
+        'target in': 1,
+        'repl in': 10,
+        'expected str': '10\n\t2\n',
+        'reason': 'node chain with two nodes, target present first'
+    },
+
+    {
+        'tree in': tn.treenode(1, tn.treenode(2)),
+        'target in': 1,
+        'repl in': 10,
+        'expected str': '10\n\t2\n',
+        'reason': 'node chain with two nodes, target present first'
+    },
+
+    {
+        'tree in': tn.treenode(1, tn.treenode(2, tn.treenode(3))),
+        'target in': 1,
+        'repl in': 10,
+        'expected str': '10\n\t2\n\t\t3\n',
+        'reason': 'node chain with two nodes, target present first'
     }
 ]
 
-
-"""
-tree_in = None
-target_in = 1
-repl_in = 0
-expected_str = "EMPTY"
-reason = 'empty tree'
-
-tn.treenode(tree_in, target_in, repl_in).subst(tree_in, target_in, repl_in)
-result_str = tf.to_string(tree_in)
-if result_str != expected_str:
-    print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result_str, expected_str, reason))
-"""
+for test in test_suite:
+    tree_in = test['tree in']
+    target_in = test['target in']
+    repl_in = test['repl in']
+    expected_str = test['expected str']
+    reason = test['reason']
+    tn.treenode(tree_in, target_in, repl_in).subst(tree_in, target_in, repl_in)
+    result_str = tf.to_string(tree_in)
+    if result_str != expected_str:
+        print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result_str, expected_str, reason))
