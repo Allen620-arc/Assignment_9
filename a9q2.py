@@ -20,6 +20,7 @@ class treenode(object):
         self.left = left
         self.right = right
 
+
 def subst(tnode, target, replacement):
     """
     Purpose:
@@ -41,6 +42,7 @@ def subst(tnode, target, replacement):
         subst(tnode.left, target, replacement)
         subst(tnode.right, target, replacement)
 
+
 def copy(tnode):
     """
     Purpose:
@@ -57,8 +59,37 @@ def copy(tnode):
     else:
         return treenode(tnode.data, tnode.left, tnode.right)
 
+
 def collect_data_inorder(tnode):
-    return list
+    """
+    Purpose:
+        To collect all the data values in the given tree.
+    Pre-conditions:
+        :param tnode: a tree node
+    Post-conditions:
+         None.
+    Return:
+        A list of all the data values, and the data values appear in the list according to the in-order sequence.
+    """
+    if tnode is None:
+        return []
+    else:
+        collect_data_inorder(tnode.left)
+        collect_data_inorder(tnode.right)
+        return [tnode.data] + collect_data_inorder(tnode.left) + collect_data_inorder(tnode.right)
+
 
 def count_smaller(tnode, target):
+    """
+    Purpose:
+        Count the number of data values in the given tree that are less than the given target value.
+    Pre-conditions:
+        :param tnode: a tree node
+        :param target: a value that might appear in the node chain
+    Post-conditions:
+        None.
+    Return:
+        The number of values less than target.
+    """
+
     return target

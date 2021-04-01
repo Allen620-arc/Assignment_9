@@ -120,3 +120,42 @@ for test in test_suite:
     output_string = tf.to_string(output_tree)
     if output_string != expected_string:
         print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, output_string, expected_string, reason))
+
+# ####################################################################################################
+# #### UNIT TEST CASE: collect_data_inorder() ####
+
+test_item = 'collect_data_inorder(tnode)'
+
+test_suite = [
+    {
+        'tree in': None,
+        'expected list': [],
+        'reason': 'empty tree'
+    },
+
+    {
+        'tree in': tn.treenode(1),
+        'expected list': [1],
+        'reason': 'copied tree with one node'
+    },
+
+    {
+        'tree in': tn.treenode(1, tn.treenode(2)),
+        'expected list': [1, 2],
+        'reason': 'copied tree with two nodes'
+    },
+
+    {
+        'tree in': tn.treenode(1, tn.treenode(2, tn.treenode(3))),
+        'expected list': [1, 2, 3],
+        'reason': 'copied tree with two nodes'
+    }
+]
+
+for test in test_suite:
+    tree_in = test['tree in']
+    expected_list = test['expected list']
+    reason = test['reason']
+    output_list = tn.collect_data_inorder(tree_in)
+    if output_list != expected_list:
+        print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, output_list, expected_list, reason))
