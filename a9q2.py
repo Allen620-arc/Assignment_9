@@ -91,5 +91,12 @@ def count_smaller(tnode, target):
     Return:
         The number of values less than target.
     """
-
-    return target
+    if tnode is None:
+        return 0
+    else:
+        val = 0
+        if tnode.data < target:
+            val += 1
+        val += count_smaller(tnode.left, target)
+        val += count_smaller(tnode.right, target)
+        return val
