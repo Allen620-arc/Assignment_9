@@ -20,43 +20,45 @@ class treenode(object):
         self.left = left
         self.right = right
 
-    def subst(self, tnode, target, replacement):
-        """
-        Purpose:
-            Replaces each occurrence of the target value with the replacement
-        Pre-conditions:
-            :param tnode: a tree node
-            :param target: a value that might appear in the node chain
-            :param replacement: the value to replace the target
-        Pre-conditions:
-            Each occurrence of the target value in the chain is replaced with the replacement value.
-        Return:
-            None, but modifies the given tree.
-        """
-        if tnode is None:
-            return None
-        else:
-            if tnode is not None:
-                if tnode.data is target:
-                    tnode.data = replacement
-            self.subst(tnode.left, target, replacement)
-            self.subst(tnode.right, target, replacement)
-
-    def copy(self, tnode):
-        """
-        Purpose:
-            To create an exact copy of the given tree, with completely new tree nodes, but exactly the same data values.
-        Pre-conditions:
-            :param tnode: a tree node
-        Post-conditions:
-
-        Return:
-
-        """
+def subst(tnode, target, replacement):
+    """
+    Purpose:
+        Replaces each occurrence of the target value with the replacement
+    Pre-conditions:
+        :param tnode: a tree node
+        :param target: a value that might appear in the node chain
+        :param replacement: the value to replace the target
+    Post-conditions:
+        Each occurrence of the target value in the chain is replaced with the replacement value.
+    Return:
+        None, but modifies the given tree.
+    """
+    if tnode is None:
         return None
+    else:
+        if tnode.data is target:
+            tnode.data = replacement
+        subst(tnode.left, target, replacement)
+        subst(tnode.right, target, replacement)
 
-    def collect_data_inorder(self, tnode):
-        return list
+def copy(tnode):
+    """
+    Purpose:
+        To create an exact copy of the given tree, with completely new tree nodes, but exactly the same data values.
+    Pre-conditions:
+        :param tnode: a tree node
+    Post-conditions:
+         None.
+    Return:
+        A reference to the new tree if tnode has values.
+    """
+    if tnode is None:
+        return None
+    else:
+        return treenode(tnode.data, tnode.left, tnode.right)
 
-    def count_smaller(self, tnode, target):
-        return target
+def collect_data_inorder(tnode):
+    return list
+
+def count_smaller(tnode, target):
+    return target
