@@ -74,8 +74,6 @@ def collect_data_inorder(tnode):
     if tnode is None:
         return []
     else:
-        collect_data_inorder(tnode.left)
-        collect_data_inorder(tnode.right)
         return [tnode.data] + collect_data_inorder(tnode.left) + collect_data_inorder(tnode.right)
 
 
