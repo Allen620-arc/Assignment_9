@@ -6,7 +6,6 @@
 """
 
 import a9q3 as tn
-import treefunctions as tf
 
 # ####################################################################################################
 # #### UNIT TEST CASE: expression() ####
