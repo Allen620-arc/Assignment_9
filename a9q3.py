@@ -21,10 +21,20 @@ class treenode(object):
         self.right = right
 
 
-def expression(t):
-    if t is None:
+def expression(tnode):
+    """
+    Purpose:
+        Produces a string representation of an input mathematical formula represented by an expression tree.
+    Pre-conditions:
+        :param tnode: a tree node
+    Post-conditions:
+        None
+    Return:
+        A string representation of the of the mathematical formula represented by an expression tree.
+    """
+    if tnode is None:
         return ''
     else:
-        left_string = expression(t.left)
-        right_string = expression(t.right)
-        return '(' + str(left_string) + str(t.data) + str(right_string) + ')'
+        left_string = expression(tnode.left)
+        right_string = expression(tnode.right)
+        return '(' + str(left_string) + str(tnode.data) + str(right_string) + ')'
