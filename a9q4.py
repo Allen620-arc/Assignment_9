@@ -22,7 +22,27 @@ class treenode(object):
 
 
 def complete(tnode):
+    """
+    Purpose:
+        To check if the binary tree is a complete binary tree.
+    Pre-conditions:
+        :param tnode: a tree node
+    Post-conditions:
+        None
+    Return:
+        A boolean value, either True or False.
+    """
     def cmplt(tnode):
+        """
+        Purpose:
+            To check if the binary tree is a complete binary tree.
+        Pre-conditions:
+            :param tnode: a tree node
+        Post-conditions:
+            None
+        Return:
+            A boolean value, either True or False.
+        """
         if tnode is None:
             return None, False
         else:
@@ -32,3 +52,4 @@ def complete(tnode):
                 return rdepth + 1, True
             else:
                 return None, False
+    return cmplt(tnode)
