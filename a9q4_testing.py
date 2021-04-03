@@ -10,7 +10,7 @@ import a9q4 as tn
 # ####################################################################################################
 # #### UNIT TEST CASE: expression() ####
 
-test_item = 'expression()'
+test_item = 'complete()'
 
 test_suite = [
     {
@@ -22,8 +22,8 @@ test_suite = [
 
     {
         'tree in': tn.treenode(1),
-        'subtree height': None,
-        'expected boolean': False,
+        'subtree height': 1,
+        'expected boolean': True,
         'reason': 'No tree in.',
     },
 
@@ -36,15 +36,15 @@ test_suite = [
 
     {
         'tree in': tn.treenode(1, tn.treenode(2), tn.treenode(3)),
-        'subtree height': None,
-        'expected boolean': False,
+        'subtree height': 2,
+        'expected boolean': True,
         'reason': 'No tree in.',
     },
 
     {
         'tree in':  tn.treenode(1, tn.treenode(2, tn.treenode(2), tn.treenode(3)), tn.treenode(4, tn.treenode(4), tn.treenode(5))),
-        'subtree height': None,
-        'expected boolean': False,
+        'subtree height': 2,
+        'expected boolean': True,
         'reason': 'No tree in.',
     }
 ]
@@ -55,5 +55,5 @@ for test in test_suite:
     expected_bool = test['expected boolean']
     reason = test['reason']
     result_str = tn.complete(tree_in)
-    if result_str != subtree_height:
-        print('Test failed: {}: got "{}" expected "{}" -- {}'.format(tree_in, subtree_height, expected_bool, reason))
+    if result_str != (subtree_height, expected_bool):
+        print('Test failed: {}: got "{}", "{}" expected "{}", "{}" -- {}'.format(test_item, result_str[0], result_str[1], subtree_height, expected_bool, reason))
