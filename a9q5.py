@@ -37,7 +37,7 @@ def ordered(tnode):
         return True
     if tnode.right is None:
         return True
-    if tnode.left > tnode.data > tnode.right:
+    if tnode.left.data > tnode.data > tnode.right.data:
         return True
     else:
         left_order = ordered(tnode.left)
